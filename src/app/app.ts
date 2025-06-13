@@ -1,20 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ClientCredentialsService } from './client-credentials';
+import { TokenDisplay } from './components/token-display/token-display';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css',
-  standalone: true
+  standalone: true,
+  imports: [TokenDisplay],
+  template: `<app-token-display></app-token-display>`
 })
-export class App {
-  protected title = 'spotify-web-api';
-
-  constructor(private clientCredentials: ClientCredentialsService) {
-    this.clientCredentials.sendAuthRequest().subscribe(res => {
-      console.log('Token:', res.access_token);
-    });
-  }
-}
+export class App {}
