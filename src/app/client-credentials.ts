@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders
+} from '@angular/common/http';
+import { Observable, Subject, catchError, throwError } from 'rxjs';
 import { spotifyApiKeys } from './api-secrets/spotify-api-keys';
 
 export interface SpotifyAuthResponse {
@@ -13,6 +17,10 @@ export interface SpotifyAuthResponse {
   providedIn: 'root'
 })
 export class ClientCredentialsService {
+  private readonly errorHandlerSubject = new Subject<HttpErrorResponse>();
+  get errorHandler$(): Observable<HttpErrorResponse> {
+    return this.errorHandlerSubject.asObservable();
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -20,16 +28,23 @@ export class ClientCredentialsService {
     const body = new URLSearchParams();
     body.set('grant_type', 'client_credentials');
 
-    const authHeader = btoa(`${spotifyApiKeys.CLIENT_ID}:${spotifyApiKeys.CLIENT_SECRET}`);
     const headers = new HttpHeaders({
-      'Authorization': 'Basic ' + authHeader,
+      Authorization:
+        'Basic ' + btoa(`${spotifyApiKeys.CLIENT_ID}:${spotifyApiKeys.CLIENT_SECRET}`),
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
-    return this.http.post<SpotifyAuthResponse>(
-      'https://accounts.spotify.com/api/token',
-      body.toString(),
-      { headers }
-    );
+    return this.http
+      .post<SpotifyAuthResponse>(
+        'https://accounts.spotify.com/api/token',
+        body.toString(),
+        { headers }
+      )
+      .pipe(catchError(err => this.handleError(err)));
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    this.errorHandlerSubject.next(error);
+    return throwError(() => new Error(error.message));
   }
 }
