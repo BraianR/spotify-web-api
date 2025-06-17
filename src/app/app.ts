@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { TokenDisplay } from './components/token-display/token-display';
+import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
+  templateUrl: './app.html',
+  styleUrls: ['./app.css'],
   standalone: true,
-  imports: [TokenDisplay],
-  template: `<app-token-display></app-token-display>`,
+  imports: [RouterModule, MatIconModule]
 })
 export class App {}
-
-
