@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TokenDisplay } from './token-display';
+import { Search } from './search';
 
-describe('TokenDisplay', () => {
-  let component: TokenDisplay;
-  let fixture: ComponentFixture<TokenDisplay>;
+describe('Search', () => {
+  let component: Search;
+  let fixture: ComponentFixture<Search>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TokenDisplay]
+      imports: [Search]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TokenDisplay);
+    fixture = TestBed.createComponent(Search);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

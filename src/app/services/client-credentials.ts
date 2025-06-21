@@ -5,7 +5,7 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { Observable, Subject, catchError, throwError } from 'rxjs';
-import { spotifyApiKeys } from './api-secrets/spotify-api-keys';
+import { spotifyApiKeys } from '../api-secrets/spotify-api-keys';
 
 export interface SpotifyAuthResponse {
   access_token: string;

@@ -1,0 +1,41 @@
+<mat-card class="search-container">
+  <div class="search-header">
+    <button mat-icon-button routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h2>Buscar artista</h2>
+  </div>
+
+  <div class="search-bar">
+    <mat-form-field appearance="fill" class="search-field">
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchQuery"
+        placeholder="e.g. Shakira"
+        (keyup.enter)="search()"
+      />
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="search()">
+      <mat-icon>search</mat-icon> Buscar
+    </button>
+  </div>
+</mat-card>
+
+
+<div class="results-container" *ngIf="artists.length">
+  <mat-card
+    *ngFor="let artist of artists"
+    class="artist-card"
+    (click)="goToArtist(artist.id)"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ artist.name }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="artist.images[0]?.url || 'assets/default-artist.png'"
+      alt="{{ artist.name }}"
+    />
+  </mat-card>
+</div>

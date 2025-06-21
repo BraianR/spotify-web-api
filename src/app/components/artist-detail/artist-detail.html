@@ -1,0 +1,52 @@
+<!-- src/app/components/artist-detail/artist-detail.component.html -->
+<div class="detail-container" *ngIf="!loading && !error; else loadingTpl">
+
+  <!-- Botón de volver -->
+  <button mat-icon-button routerLink="/" class="back-btn">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <!-- Tarjeta del artista -->
+  <mat-card class="artist-card">
+    <mat-card-header>
+      <mat-card-title>{{ artist.name }}</mat-card-title>
+      <mat-card-subtitle>
+        Followers: {{ artist.followers.total | number }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      *ngIf="artist.images?.length"
+      [src]="artist.images[0].url"
+      alt="{{ artist.name }}"
+    />
+    <mat-card-content>
+      <p>Popularidad: {{ artist.popularity }}%</p>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Tarjeta de Top Tracks -->
+  <mat-card class="tracks-card" *ngIf="topTracks.length">
+    <mat-card-header>
+      <mat-card-title>Top Tracks</mat-card-title>
+    </mat-card-header>
+
+    <div class="tracks-list">
+      <div class="track-item" *ngFor="let t of topTracks; let i = index">
+        <span class="track-index">{{ i + 1 }}</span>
+        <div class="track-content">
+          <span class="track-name">{{ t.name }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
+<ng-template #loadingTpl>
+  <div class="loading">
+    <mat-icon>hourglass_empty</mat-icon>
+    <p *ngIf="loading">Cargando artista…</p>
+    <p *ngIf="error" class="error">{{ error }}</p>
+  </div>
+</ng-template>

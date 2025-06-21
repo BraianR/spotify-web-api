@@ -1,0 +1,143 @@
+/* Contenedor principal */
+.search-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: rgba(32, 32, 32, 0.95); /* fondo oscuro semitransparente */
+    color: #eee;                        /* texto claro */
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  }
+  
+  /* Header con icono y título */
+  .search-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .search-header mat-icon {
+    font-size: 28px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+  }
+  
+  .search-header mat-icon:hover {
+    color: #fff;
+  }
+  
+  .search-header h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Barra de búsqueda */
+  .search-bar {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .search-field {
+    flex: 1;
+  }
+  
+  .search-field .mat-form-field-flex {
+    background: #3c3c3c;  /* campo más oscuro */
+    border-radius: 4px;
+  }
+  
+  .search-field .mat-form-field-outline {
+    border-color: #555;
+  }
+  
+  /* Etiqueta y placeholder */
+  .mat-form-field-label,
+  .mat-input-element {
+    color: #ccc !important;
+  }
+  
+  /* Botón “Buscar” */
+  button[mat-flat-button] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: none;
+    font-weight: 600;
+    background-color: #1db954; /* verde Spotify */
+    color: #fff;
+    transition: background-color 0.2s;
+  }
+  
+  button[mat-flat-button]:hover {
+    background-color: #1aa34a;
+  }
+  
+  /* Icono del botón */
+  button[mat-flat-button] mat-icon {
+    font-size: 20px;
+  }
+  
+  /* Resultados: tarjetas de artista */
+  .results-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .artist-card {
+    background: #2b2b2b;
+    color: #fff;
+    width: 200px;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease;
+  }
+  
+  .artist-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  }
+  
+  .artist-card mat-card-header {
+    padding: 0.5rem;
+  }
+  
+  .artist-card mat-card-title {
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Imagen del artista */
+  .artist-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Ajuste responsive */
+  @media (max-width: 600px) {
+    .search-container {
+      margin: 1rem;
+      padding: 1rem;
+    }
+    .search-header h2 {
+      font-size: 1.5rem;
+    }
+    button[mat-flat-button] {
+      padding: 0.5rem 1rem;
+    }
+    .artist-card {
+      width: 45%;
+    }
+  }
+  
