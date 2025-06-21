@@ -1,0 +1,46 @@
+<div class="detail-container" *ngIf="!loading && !error; else statusTpl">
+
+  <button mat-icon-button routerLink="/albums" class="back-btn">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <mat-card class="album-card">
+    <img
+      mat-card-image
+      *ngIf="albumImageUrl"
+      [src]="albumImageUrl"
+      alt="{{ albumName }}"
+    />
+    <mat-card-header>
+      <mat-card-title>{{ albumName }}</mat-card-title>
+      <mat-card-subtitle>
+        {{ albumArtists }} • {{ albumRelease }}
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+
+  <mat-card class="tracks-card" *ngIf="tracks.length">
+    <mat-card-header>
+      <mat-card-title>Pistas</mat-card-title>
+    </mat-card-header>
+
+    <div class="tracks-list">
+      <div class="track-item" *ngFor="let t of tracks; let i = index">
+        <span class="track-index">{{ i + 1 }}</span>
+        <div class="track-content">
+          <span class="track-name">{{ t.name }}</span>
+          <span class="track-duration">{{ t.duration }}</span>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
+<ng-template #statusTpl>
+  <div *ngIf="loading" class="loading">
+    <mat-icon>hourglass_empty</mat-icon>
+    <p>Cargando…</p>
+  </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</ng-template>

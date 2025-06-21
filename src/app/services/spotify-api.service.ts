@@ -51,5 +51,19 @@ export class SpotifyApiService {
       }
     );
   }
+
+    getAlbum(id: string, token: string): Observable<any> {
+      const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+      return this.http.get<any>(`${this.baseUrl}/albums/${id}`, { headers });
+    }
+  
+    getAlbumTracks(id: string, token: string, limit = 50): Observable<any> {
+      const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+      const params  = new HttpParams().set('limit', `${limit}`);
+      return this.http.get<any>(
+        `${this.baseUrl}/albums/${id}/tracks`,
+        { headers, params }
+      );
+    }
   
 }
