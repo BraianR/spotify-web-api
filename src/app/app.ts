@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
+// src/app/app.ts
+import { Component }     from '@angular/core';
+import { RouterModule }  from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrls: ['./app.css'],
   standalone: true,
-  imports: [RouterModule, MatIconModule]
+  imports: [RouterModule],
+  template: `<router-outlet></router-outlet>`
 })
 export class App {}
