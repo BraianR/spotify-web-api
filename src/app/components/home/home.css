@@ -47,8 +47,7 @@
     font-size: 1.4rem;
     vertical-align: middle;
 }
-  
-/* SECCIÓN DE FUNCIONALIDADES */
+
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -83,13 +82,11 @@
     color: #cccccc;
 }
   
-/* ICONOS FUNCIONALIDADES */
 .feature-card .material-icons {
     font-size: 1.75rem;
     color: #1DB954;
 }
-  
-/* FOOTER */
+
 .footer {
     margin-top: 2rem;
     text-align: center;

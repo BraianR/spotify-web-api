@@ -41,4 +41,15 @@ export class SpotifyApiService {
       { ...this.authHeaders(token), params }
     );
   }
+
+  getNewReleases(token: string, limit = 20) {
+    return this.http.get<any>(
+      `${this.baseUrl}/browse/new-releases`,
+      {
+        headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
+        params: new HttpParams().set('limit', `${limit}`)
+      }
+    );
+  }
+  
 }

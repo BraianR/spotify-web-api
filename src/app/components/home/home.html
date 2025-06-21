@@ -1,41 +1,40 @@
 <div class="landing-container">
 
-    <section class="intro">
-      <h2 class="subtitle">Explora el mundo musical con la Web API de Spotify</h2>
-      <p class="description">
-        Busca canciones, artistas y álbumes. Descubre lo más escuchado del momento.
-      </p>
-      <button routerLink="/search" class="btn-primary">
-        <span class="material-icons">search</span> Empezar a buscar
-      </button>
-    </section>
-  
-    <section class="features">
-      <div class="feature-card">
-        <span class="material-icons">mic</span>
-        <div>
-          <h3>Artistas y detalles</h3>
-          <p>Explora los perfiles de tus artistas favoritos y conoce su discografía.</p>
-        </div>
+
+  <section class="intro">
+    <h2 class="subtitle">Explora el mundo musical con la Web API de Spotify</h2>
+    <p class="description">
+      Busca canciones, artistas y álbumes. Descubre lo más escuchado del momento.
+    </p>
+    <button routerLink="/search" class="btn-primary">
+      <span class="material-icons">search</span>
+      Empezar a buscar
+    </button>
+  </section>
+
+  <section class="features">
+    
+    <div class="feature-card" routerLink="/search">
+      <span class="material-icons">mic</span>
+      <div>
+        <h3>Artistas y detalles</h3>
+        <p>Explora perfiles y discografías de tus artistas favoritos.</p>
       </div>
-      <div class="feature-card">
-        <span class="material-icons">album</span>
-        <div>
-          <h3>Álbumes destacados</h3>
-          <p>Accede a los lanzamientos y álbumes más populares.</p>
-        </div>
+    </div>
+
+    
+    <div class="feature-card" routerLink="/albums">
+      <span class="material-icons">album</span>
+      <div>
+        <h3>Álbumes destacados</h3>
+        <p>Accede a los lanzamientos y álbumes más populares.</p>
       </div>
-      <div class="feature-card">
-        <span class="material-icons">whatshot</span>
-        <div>
-          <h3>Lo más escuchado</h3>
-          <p>Explora las tendencias musicales actuales del mundo.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 RIA 2025</p>
+  </footer>
   
-    <footer class="footer">
-      <p>© 2025 RIA 2025</p>
-    </footer>
-  </div>
-  
+</div>

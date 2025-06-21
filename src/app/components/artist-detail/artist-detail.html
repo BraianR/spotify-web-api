@@ -1,12 +1,9 @@
-<!-- src/app/components/artist-detail/artist-detail.component.html -->
 <div class="detail-container" *ngIf="!loading && !error; else loadingTpl">
 
-  <!-- Botón de volver -->
   <button mat-icon-button routerLink="/" class="back-btn">
     <mat-icon>arrow_back</mat-icon>
   </button>
 
-  <!-- Tarjeta del artista -->
   <mat-card class="artist-card">
     <mat-card-header>
       <mat-card-title>{{ artist.name }}</mat-card-title>
@@ -25,7 +22,6 @@
     </mat-card-content>
   </mat-card>
 
-  <!-- Tarjeta de Top Tracks -->
   <mat-card class="tracks-card" *ngIf="topTracks.length">
     <mat-card-header>
       <mat-card-title>Top Tracks</mat-card-title>
