@@ -1,5 +1,4 @@
- /* CONTENEDOR PRINCIPAL */
- .landing-container {
+.landing-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,44 +6,24 @@
     gap: 3rem;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-  
-  .logo {
-    width: 50px;
-    margin-bottom: 0.5rem;
-  }
-  
-  .title {
-    font-size: 1.8rem;
-    color: #1DB954;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  /* INTRO */
-  .intro {
+.intro {
     text-align: center;
     max-width: 600px;
-  }
+}
   
-  .subtitle {
+.subtitle {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-  }
+}
   
-  .description {
+.description {
     font-size: 1rem;
     color: #cccccc;
     margin-bottom: 1.5rem;
-  }
-  
-  /* BOTÓN PRINCIPAL */
-  .btn-primary {
+}
+
+.btn-primary {
     background-color: #1DB954;
     color: #fff;
     border: none;
@@ -57,28 +36,28 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
-  }
+}
   
-  .btn-primary:hover {
+.btn-primary:hover {
     background-color: #1ed760;
     transform: translateY(-2px);
-  }
+}
   
-  .material-icons {
+.material-icons {
     font-size: 1.4rem;
     vertical-align: middle;
-  }
+}
   
-  /* SECCIÓN DE FUNCIONALIDADES */
-  .features {
+/* SECCIÓN DE FUNCIONALIDADES */
+.features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
     width: 100%;
     max-width: 1100px;
-  }
+}
   
-  .feature-card {
+.feature-card {
     background-color: rgba(0, 0, 0, 0.55);
     border-radius: 16px;
     padding: 1rem;
@@ -87,34 +66,34 @@
     gap: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     transition: transform 0.2s ease;
-  }
+}
   
-  .feature-card:hover {
+.feature-card:hover {
     transform: translateY(-4px);
-  }
+}
   
-  .feature-card h3 {
+.feature-card h3 {
     font-size: 1rem;
     margin-bottom: 0.25rem;
     color: #ffffff;
-  }
+}
   
-  .feature-card p {
+.feature-card p {
     font-size: 0.9rem;
     color: #cccccc;
-  }
+}
   
-  /* ICONOS FUNCIONALIDADES */
-  .feature-card .material-icons {
+/* ICONOS FUNCIONALIDADES */
+.feature-card .material-icons {
     font-size: 1.75rem;
     color: #1DB954;
-  }
+}
   
-  /* FOOTER */
-  .footer {
+/* FOOTER */
+.footer {
     margin-top: 2rem;
     text-align: center;
     font-size: 0.85rem;
     color: #999999;
-  }
+}
   
