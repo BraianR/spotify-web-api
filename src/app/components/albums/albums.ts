@@ -38,21 +38,22 @@ export class Albums implements OnInit {
   ngOnInit() {
     this.auth.sendAuthRequest().subscribe({
       next: tok => {
-        this.spotify.getNewReleases(tok.access_token).subscribe({
-          next: res => {
+        // ASYNC AWAIT HERE
+        (async () => {
+          try {
+            const res = await this.spotify.getNewReleasesAsync(tok.access_token, 20);
             this.releases = res.albums.items.map((a: any) => ({
               id: a.id,
               name: a.name,
               images: a.images,
               artistNames: a.artists.map((ar: any) => ar.name).join(', ')
             }));
-            this.loading = false;
-          },
-          error: () => {
-            this.error   = 'Error al cargar nuevos lanzamientos';
+          } catch {
+            this.error = 'Error al cargar nuevos lanzamientos';
+          } finally {
             this.loading = false;
           }
-        });
+        })();
       },
       error: () => {
         this.error   = 'Error de autenticación';
@@ -60,4 +61,5 @@ export class Albums implements OnInit {
       }
     });
   }
+
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SpotifyApiService {
@@ -50,6 +50,13 @@ export class SpotifyApiService {
         params: new HttpParams().set('limit', `${limit}`)
       }
     );
+  }
+
+   /** 
+   * ASYNC AWAIT HERE: 
+   */
+   getNewReleasesAsync(token: string, limit = 20): Promise<any> {
+    return lastValueFrom(this.getNewReleases(token, limit));
   }
 
     getAlbum(id: string, token: string): Observable<any> {
