@@ -1,14 +1,14 @@
-import { Component }            from '@angular/core';
-import { CommonModule }         from '@angular/common';
-import { FormsModule }          from '@angular/forms';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule }  from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { MatCardModule }        from '@angular/material/card';
-import { MatFormFieldModule }   from '@angular/material/form-field';
-import { MatInputModule }       from '@angular/material/input';
-import { MatButtonModule }      from '@angular/material/button';
-import { SpotifyApiService }    from '../../services/spotify-api.service';
+import { MatCardModule }      from '@angular/material/card';
+import { MatIconModule }      from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule }     from '@angular/material/input';
+import { MatButtonModule }    from '@angular/material/button';
 import { ClientCredentialsService } from '../../services/client-credentials';
-import { MatIconModule } from '@angular/material/icon';
+import { SpotifyApiService }        from '../../services/spotify-api.service';
 
 @Component({
   selector: 'app-search',
@@ -18,35 +18,50 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     RouterModule,
     MatCardModule,
+    MatIconModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
   ],
   templateUrl: './search.html',
-  styleUrls: ['./search.css']
+  styleUrls:   ['./search.css']
 })
 export class Search {
-  searchQuery = '';
+  query   = '';
   artists: any[] = [];
-  token = '';
+  albums:  Array<any & { artistNames: string }> = [];
 
   constructor(
-    private auth:   ClientCredentialsService,
-    private spotify:SpotifyApiService,
-    private router: Router
-  ) {
+    private auth:    ClientCredentialsService,
+    private spotify: SpotifyApiService,
+    private router:  Router
+  ) {}
 
-    this.auth.sendAuthRequest().subscribe(res => this.token = res.access_token);
+  onSearch() {
+    if (!this.query.trim()) return;
+    this.auth.sendAuthRequest().subscribe({
+      next: tok => {
+        this.spotify
+          .search(this.query, ['artist','album'], tok.access_token, 5)
+          .subscribe(res => {
+            this.artists = res.artists?.items || [];
+  
+            this.albums = (res.albums?.items || []).map((a: any) => ({
+              ...a,
+              artistNames: (a.artists as any[]).map((ar: any) => ar.name).join(', ')
+            }));
+          });
+      },
+      error: () => console.error('Error autenticando')
+    });
   }
+  
 
-  search() {
-    if (!this.token || !this.searchQuery.trim()) return;
-    this.spotify.searchArtists(this.searchQuery, this.token)
-      .subscribe(res => this.artists = res.artists.items);
-  }
-
-  goToArtist(id: string) {
+  gotoArtistDetail(id: string) {
     this.router.navigate(['/artist', id]);
+  }
+
+  gotoAlbumDetail(id: string) {
+    this.router.navigate(['/album',  id]);
   }
 }

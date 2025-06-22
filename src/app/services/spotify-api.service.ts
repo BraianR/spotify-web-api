@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { lastValueFrom, Observable } from 'rxjs';
+import { lastValueFrom, Observable, switchMap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SpotifyApiService {
@@ -72,5 +72,21 @@ export class SpotifyApiService {
         { headers, params }
       );
     }
+
+    search(
+      query: string,
+      types: ('artist' | 'album')[],
+      token: string,
+      limit = 5
+    ): Observable<any> {
+      const params = new HttpParams()
+        .set('q', query)
+        .set('type', types.join(','))
+        .set('limit', limit.toString());
   
+      return this.http.get<any>(
+        `${this.baseUrl}/search`,
+        { ...this.authHeaders(token), params }
+      );
+    }
 }

@@ -68,14 +68,14 @@ Albums
 AlbumDetail
 
 ## Rutas y Navegación
-| Ruta          | Componente            |
-| ------------- | --------------------- |
-| `/`           | HomeComponent         |
-| `/search`     | SearchComponent       |
-| `/artist/:id` | ArtistDetailComponent |
-| `/albums`     | AlbumsComponent       |
-| `/album/:id`  | AlbumDetailComponent  |
-| `**`          | redirige a `/`        |
+| Ruta            | Componente         |
+| --------------- | ------------------ |
+| `/`             | Home               |
+| `/search-artist`| SearchArtist       |
+| `/artist/:id`   | ArtistDetail       |
+| `/albums`       | Albums             |
+| `/album/:id`    | AlbumDetail        |
+| `**`            | redirige a `/`     |
 
 
 ## ########################################################### ##

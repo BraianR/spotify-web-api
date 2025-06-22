@@ -1,9 +1,9 @@
 <mat-card class="search-container">
   <div class="search-header">
-    <button mat-icon-button routerLink="/">
+    <button mat-icon-button routerLink="/" aria-label="Volver" class="back-btn">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <h2>Buscar artista</h2>
+    <h2>Buscar artista o álbum</h2>
   </div>
 
   <div class="search-bar">
@@ -11,30 +11,61 @@
       <mat-label>Nombre</mat-label>
       <input
         matInput
-        [(ngModel)]="searchQuery"
-        placeholder="e.g. Shakira"
-        (keyup.enter)="search()"
+        [(ngModel)]="query"
+        placeholder="Ej: Shakira"
+        (keyup.enter)="onSearch()"
       />
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="search()">
-      <mat-icon>search</mat-icon> Buscar
+
+    <button
+      mat-flat-button
+      color="primary"
+      class="search-button"
+      (click)="onSearch()"
+    >
+      <mat-icon>search</mat-icon>
+      Buscar
     </button>
   </div>
 </mat-card>
 
-<div class="results-container" *ngIf="artists.length">
-  <mat-card
-    *ngFor="let artist of artists"
-    class="artist-card"
-    (click)="goToArtist(artist.id)"
-  >
-    <mat-card-header>
-      <mat-card-title>{{ artist.name }}</mat-card-title>
-    </mat-card-header>
-    <img
-      mat-card-image
-      [src]="artist.images[0]?.url || 'assets/default-artist.png'"
-      alt="{{ artist.name }}"
-    />
-  </mat-card>
-</div>
+<section *ngIf="artists.length" class="results-section">
+  <h3>Artistas</h3>
+  <div class="results-container">
+    <mat-card
+      *ngFor="let a of artists"
+      class="artist-card"
+      (click)="gotoArtistDetail(a.id)"
+    >
+      <mat-card-header>
+        <mat-card-title>{{ a.name }}</mat-card-title>
+      </mat-card-header>
+      <img
+        mat-card-image
+        [src]="a.images[0]?.url || 'assets/default-artist.png'"
+        alt="{{ a.name }}"
+      />
+    </mat-card>
+  </div>
+</section>
+
+<section *ngIf="albums.length" class="results-section">
+  <h3>Álbumes</h3>
+  <div class="results-container">
+    <mat-card
+      *ngFor="let alb of albums"
+      class="album-card"
+      (click)="gotoAlbumDetail(alb.id)"
+    >
+      <img
+        mat-card-image
+        [src]="alb.images[0]?.url"
+        alt="{{ alb.name }}"
+      />
+      <mat-card-content>
+        <h3>{{ alb.name }}</h3>
+        <p>{{ alb.artistNames }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
