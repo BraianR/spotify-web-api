@@ -1,28 +1,23 @@
-import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders
-} from '@angular/common/http';
+// src/app/services/client-credentials.ts
+import { Injectable, inject }                 from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject, catchError, throwError } from 'rxjs';
 import { spotifyApiKeys } from '../api-secrets/spotify-api-keys';
 
 export interface SpotifyAuthResponse {
   access_token: string;
-  token_type: string;
-  expires_in: number;
+  token_type:   string;
+  expires_in:   number;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ClientCredentialsService {
+  private readonly http = inject(HttpClient);
+
   private readonly errorHandlerSubject = new Subject<HttpErrorResponse>();
   get errorHandler$(): Observable<HttpErrorResponse> {
     return this.errorHandlerSubject.asObservable();
   }
-
-  constructor(private http: HttpClient) {}
 
   sendAuthRequest(): Observable<SpotifyAuthResponse> {
     const body = new URLSearchParams();

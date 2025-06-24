@@ -4,38 +4,40 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
 
-  <mat-card class="artist-card">
-    <mat-card-header>
-      <mat-card-title>{{ artist.name }}</mat-card-title>
-      <mat-card-subtitle>
-        Followers: {{ artist.followers.total | number }}
-      </mat-card-subtitle>
-    </mat-card-header>
-    <img
-      mat-card-image
-      *ngIf="artist.images?.length"
-      [src]="artist.images[0].url"
-      alt="{{ artist.name }}"
-    />
-    <mat-card-content>
-      <p>Popularidad: {{ artist.popularity }}%</p>
-    </mat-card-content>
-  </mat-card>
+  <ng-container *ngIf="artist">
+    <mat-card class="artist-card">
+      <mat-card-header>
+        <mat-card-title>{{ artist.name }}</mat-card-title>
+        <mat-card-subtitle>
+          Followers: {{ artist.followers.total | number }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        *ngIf="artist.images?.length"
+        [src]="artist.images[0].url"
+        alt="{{ artist.name }}"
+      />
+      <mat-card-content>
+        <p>Popularidad: {{ artist.popularity }}%</p>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card class="tracks-card" *ngIf="topTracks.length">
-    <mat-card-header>
-      <mat-card-title>Top Tracks</mat-card-title>
-    </mat-card-header>
+    <mat-card class="tracks-card" *ngIf="topTracks.length">
+      <mat-card-header>
+        <mat-card-title>Top Tracks</mat-card-title>
+      </mat-card-header>
 
-    <div class="tracks-list">
-      <div class="track-item" *ngFor="let t of topTracks; let i = index">
-        <span class="track-index">{{ i + 1 }}</span>
-        <div class="track-content">
-          <span class="track-name">{{ t.name }}</span>
+      <div class="tracks-list">
+        <div class="track-item" *ngFor="let t of topTracks; let i = index">
+          <span class="track-index">{{ i + 1 }}</span>
+          <div class="track-content">
+            <span class="track-name">{{ t.name }}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </mat-card>
+    </mat-card>
+  </ng-container>
 
 </div>
 

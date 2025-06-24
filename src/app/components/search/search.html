@@ -42,7 +42,7 @@
       </mat-card-header>
       <img
         mat-card-image
-        [src]="a.images[0]?.url || 'assets/default-artist.png'"
+        [src]=" (a.images.length ? a.images[0].url: 'assets/default-artist.png')"
         alt="{{ a.name }}"
       />
     </mat-card>
@@ -59,7 +59,7 @@
     >
       <img
         mat-card-image
-        [src]="alb.images[0]?.url"
+        [src]="alb.images.length ? alb.images[0].url : ''"
         alt="{{ alb.name }}"
       />
       <mat-card-content>

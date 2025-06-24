@@ -1,4 +1,4 @@
-import { Component, OnInit }    from '@angular/core';
+import { Component, inject, OnInit }    from '@angular/core';
 import { CommonModule }          from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatCardModule }         from '@angular/material/card';
@@ -8,6 +8,7 @@ import { MatButtonModule }       from '@angular/material/button';
 import { ClientCredentialsService, SpotifyAuthResponse } from '../../services/client-credentials';
 import { SpotifyApiService }     from '../../services/spotify-api.service';
 import { forkJoin, switchMap }   from 'rxjs';
+import { Artist, Track } from '../../models/models';
 
 @Component({
   selector: 'app-artist-detail',
@@ -21,20 +22,17 @@ import { forkJoin, switchMap }   from 'rxjs';
     MatButtonModule
   ],
   templateUrl: './artist-detail.html',
-  styleUrls: ['./artist-detail.css']
+  styleUrls:   ['./artist-detail.css']
 })
 export class ArtistDetail implements OnInit {
-  artist: any = null;
-  topTracks: any[] = [];
-  loading = true;
-  error = '';
+  private route   = inject(ActivatedRoute);
+  private auth    = inject(ClientCredentialsService);
+  private spotify = inject(SpotifyApiService);
 
-  constructor(
-    private route: ActivatedRoute,
-    private auth:  ClientCredentialsService,
-    private spotify: SpotifyApiService
-  ) {}
-
+  artist:    Artist | null = null;
+  topTracks: Track[]       = [];
+  loading    = true;
+  error      = '';
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')!;
 
