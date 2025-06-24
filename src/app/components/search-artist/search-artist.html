@@ -23,11 +23,7 @@
 </mat-card>
 
 <div class="results-container" *ngIf="artists.length">
-  <mat-card
-    *ngFor="let artist of artists"
-    class="artist-card"
-    (click)="goToArtist(artist.id)"
-  >
+  <mat-card *ngFor="let artist of artists" class="artist-card" (click)="goToArtist(artist.id)">
     <mat-card-header>
       <mat-card-title>{{ artist.name }}</mat-card-title>
     </mat-card-header>

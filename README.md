@@ -5,10 +5,11 @@
 - [Historias de Usuario](#historias-de-usuario)  
 - [Servicios REST Públicos Utilizados](#servicios-rest-públicos-utilizados)  
 - [Mockups y Mapa de Navegación](#mockups-y-mapa-de-navegación)  
-- [Tecnologías y Arquitectura](#tecnologías-y-arquitectura)  
-- [Componentes Visuales](#componentes-visuales)  
-- [Rutas y Navegación](#rutas-y-navegación)  
-- [Instalación y Configuración](#instalación-y-configuración)  
+- [Tecnologías y Arquitectura](#tecnologías-y-arquitectura)
+- [Rutas y Navegación](#rutas-y-navegación)
+- [Componentes Visuales](#componentes-visuales)
+- [Calidad y estilo de código](#calidad-y-estilo-de-código) 
+- [Instalación y Configuración](#instalación-y-configuración)
 
 ---
 
@@ -62,6 +63,7 @@ Autenticación: Client Credentials
 
 ## Componentes Visuales
 Home
+Seach
 SearchArtist
 ArtistDetail
 Albums
@@ -71,6 +73,7 @@ AlbumDetail
 | Ruta            | Componente         |
 | --------------- | ------------------ |
 | `/`             | Home               |
+| `/search`       | Search             |
 | `/search-artist`| SearchArtist       |
 | `/artist/:id`   | ArtistDetail       |
 | `/albums`       | Albums             |

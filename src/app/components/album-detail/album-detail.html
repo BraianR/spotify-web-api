@@ -1,21 +1,13 @@
 <div class="detail-container" *ngIf="!loading && !error; else statusTpl">
-
   <button mat-icon-button routerLink="/albums" class="back-btn">
     <mat-icon>arrow_back</mat-icon>
   </button>
 
   <mat-card class="album-card">
-    <img
-      mat-card-image
-      *ngIf="albumImageUrl"
-      [src]="albumImageUrl"
-      alt="{{ albumName }}"
-    />
+    <img mat-card-image *ngIf="albumImageUrl" [src]="albumImageUrl" alt="{{ albumName }}" />
     <mat-card-header>
       <mat-card-title>{{ albumName }}</mat-card-title>
-      <mat-card-subtitle>
-        {{ albumArtists }} • {{ albumRelease }}
-      </mat-card-subtitle>
+      <mat-card-subtitle> {{ albumArtists }} • {{ albumRelease }} </mat-card-subtitle>
     </mat-card-header>
   </mat-card>
 
@@ -34,7 +26,6 @@
       </div>
     </div>
   </mat-card>
-
 </div>
 
 <ng-template #statusTpl>

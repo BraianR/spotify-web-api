@@ -8,9 +8,8 @@ describe('Search-artist', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SearchArtist]
-    })
-    .compileComponents();
+      imports: [SearchArtist],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SearchArtist);
     component = fixture.componentInstance;

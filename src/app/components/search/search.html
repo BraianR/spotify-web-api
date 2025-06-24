@@ -9,20 +9,10 @@
   <div class="search-bar">
     <mat-form-field appearance="fill" class="search-field">
       <mat-label>Nombre</mat-label>
-      <input
-        matInput
-        [(ngModel)]="query"
-        placeholder="Ej: Shakira"
-        (keyup.enter)="onSearch()"
-      />
+      <input matInput [(ngModel)]="query" placeholder="Ej: Shakira" (keyup.enter)="onSearch()" />
     </mat-form-field>
 
-    <button
-      mat-flat-button
-      color="primary"
-      class="search-button"
-      (click)="onSearch()"
-    >
+    <button mat-flat-button color="primary" class="search-button" (click)="onSearch()">
       <mat-icon>search</mat-icon>
       Buscar
     </button>
@@ -32,11 +22,7 @@
 <section *ngIf="artists.length" class="results-section">
   <h3>Artistas</h3>
   <div class="results-container">
-    <mat-card
-      *ngFor="let a of artists"
-      class="artist-card"
-      (click)="gotoArtistDetail(a.id)"
-    >
+    <mat-card *ngFor="let a of artists" class="artist-card" (click)="gotoArtistDetail(a.id)">
       <mat-card-header>
         <mat-card-title>{{ a.name }}</mat-card-title>
       </mat-card-header>
@@ -52,16 +38,8 @@
 <section *ngIf="albums.length" class="results-section">
   <h3>Álbumes</h3>
   <div class="results-container">
-    <mat-card
-      *ngFor="let alb of albums"
-      class="album-card"
-      (click)="gotoAlbumDetail(alb.id)"
-    >
-      <img
-        mat-card-image
-        [src]="alb.images.length ? alb.images[0].url : ''"
-        alt="{{ alb.name }}"
-      />
+    <mat-card *ngFor="let alb of albums" class="album-card" (click)="gotoAlbumDetail(alb.id)">
+      <img mat-card-image [src]="alb.images.length ? alb.images[0].url : ''" alt="{{ alb.name }}" />
       <mat-card-content>
         <h3>{{ alb.name }}</h3>
         <p>{{ alb.artistNames }}</p>

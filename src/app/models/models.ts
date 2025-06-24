@@ -1,7 +1,7 @@
 export interface Paging<T> {
-  items:  T[];
-  total:  number;
-  limit:  number;
+  items: T[];
+  total: number;
+  limit: number;
   offset: number;
 }
 
@@ -14,27 +14,27 @@ export interface Followers {
 }
 
 export interface Artist {
-  id:         string;
-  name:       string;
-  images:     Image[];
-  genres?:    string[];
-  followers:  Followers;
+  id: string;
+  name: string;
+  images: Image[];
+  genres?: string[];
+  followers: Followers;
   popularity: number;
 }
 
 export interface Album {
-  id:          string;
-  name:        string;
-  images:      Image[];
-  artists:     Artist[];
+  id: string;
+  name: string;
+  images: Image[];
+  artists: Artist[];
   release_date?: string;
 }
 
 export interface Track {
-  id:           string;
-  name:         string;
-  album:        { images: Image[]; name: string };
-  artists:      { name: string }[];
+  id: string;
+  name: string;
+  album: { images: Image[]; name: string };
+  artists: { name: string }[];
   duration_ms?: number;
   track_number?: number;
 }
@@ -62,7 +62,7 @@ export interface SearchArtistsResponse {
 
 export interface SearchResponse {
   artists: Paging<Artist>;
-  albums:  Paging<Album>;
+  albums: Paging<Album>;
 }
 
 export interface AlbumWithNames extends Album {
